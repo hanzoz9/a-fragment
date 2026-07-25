@@ -1,0 +1,488 @@
+/* ═══════════════════════════════════════════════
+   FRAGMENT FALL — CHARACTERS PAGE
+   Page-specific styles for characters.html. Loaded after css/shared.css.
+   Verified against the original characters.html; new additions (badge
+   component, SVG icon sizing) are marked "New" at each site.
+═══════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════
+   CHARACTERS PAGE — LOCAL STYLES
+══════════════════════════════════════════════ */
+
+/* ── Page Layout ── */
+.page-wrap {
+  padding-top: var(--header-h);
+  min-height: 100vh;
+}
+
+/* ── Page Hero ── */
+.page-hero {
+  padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(180deg, var(--blood), transparent);
+  opacity: 0.3;
+}
+.page-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--blood);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-md);
+  animation: fadeUp 0.7s var(--ease-out) 0.2s both;
+}
+.page-hero-title {
+  font-family: var(--font-arabic);
+  font-size: clamp(2rem, 7vw, 4rem);
+  font-weight: 900;
+  color: var(--ghost);
+  margin-bottom: var(--sp-sm);
+  animation: fadeUp 0.7s var(--ease-out) 0.4s both;
+  text-shadow: var(--glow-text);
+}
+.page-hero-sub {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--dust);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  animation: fadeUp 0.7s var(--ease-out) 0.6s both;
+}
+
+/* ── Characters Container ── */
+.chars-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--sp-md) var(--sp-2xl);
+}
+
+/* ── Dossier Card (main character profile) ── */
+.dossier-card {
+  background: var(--shadow);
+  border: 1px solid rgba(139,26,26,0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: var(--sp-xl);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), var(--glow-blood);
+  position: relative;
+}
+.dossier-card::before {
+  content: 'CLASSIFIED · سري';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--blood);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  border: 1px solid rgba(139,26,26,0.3);
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.dossier-header {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--ash);
+}
+.dossier-avatar-col {
+  background: linear-gradient(135deg, var(--crater) 0%, rgba(139,26,26,0.08) 100%);
+  border-left: 1px solid var(--ash);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-xl) var(--sp-md);
+  gap: var(--sp-md);
+}
+.dossier-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid var(--blood);
+  background: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+.dossier-avatar svg { width: 60px; height: 60px; }
+.dossier-avatar-id {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--dust);
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+.dossier-status-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--acid);
+  box-shadow: 0 0 8px var(--acid);
+  position: absolute;
+  bottom: 6px; right: 6px;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+.dossier-info-col {
+  padding: var(--sp-lg) var(--sp-lg) var(--sp-lg) var(--sp-xl);
+}
+.dossier-codename {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--blood);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-xs);
+}
+.dossier-name {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 900;
+  color: var(--ghost);
+  margin-bottom: var(--sp-sm);
+  line-height: 1.1;
+}
+.dossier-name-en {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--amber);
+  letter-spacing: 0.3em;
+  display: block;
+  margin-bottom: var(--sp-md);
+}
+.dossier-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs);
+  margin-bottom: var(--sp-md);
+}
+/* New — .badge/.badge-* are used in markup with no CSS anywhere (same
+   missing-shared.css gap as elsewhere). Defined here since only this
+   page uses them so far. */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-family: var(--font-arabic);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  border: 1px solid;
+}
+.badge-blood { color: var(--blood); border-color: rgba(139, 26, 26, 0.35); background: rgba(139, 26, 26, 0.08); }
+.badge-amber { color: var(--amber); border-color: rgba(212, 148, 58, 0.35); background: rgba(212, 148, 58, 0.08); }
+.badge-acid  { color: var(--acid);  border-color: rgba(74, 124, 63, 0.35); background: rgba(74, 124, 63, 0.08); }
+.badge-steel { color: var(--steel); border-color: rgba(74, 90, 107, 0.4); background: rgba(74, 90, 107, 0.12); }
+.dossier-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--sp-sm);
+}
+.dossier-meta-item {
+  background: var(--crater);
+  border: 1px solid var(--ash);
+  border-radius: 5px;
+  padding: var(--sp-sm) var(--sp-md);
+}
+.dossier-meta-key {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--dust);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+.dossier-meta-val {
+  font-family: var(--font-arabic);
+  font-size: 0.85rem;
+  color: var(--bone);
+}
+
+/* ── Dossier Body ── */
+.dossier-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.dossier-section {
+  padding: var(--sp-lg);
+  border-bottom: 1px solid var(--ash);
+}
+.dossier-section:nth-child(even) {
+  border-right: 1px solid var(--ash);
+}
+.dossier-section.full-width {
+  grid-column: 1 / -1;
+}
+.dossier-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--blood);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-md);
+  padding-bottom: var(--sp-sm);
+  border-bottom: 1px solid var(--ash);
+}
+
+/* ── Stat Bars ── */
+/* New — .stat-bar-wrap/-header/-label/-value/-track had no CSS anywhere;
+   only the .stat-bar-fill color variants existed. The markup already sets
+   a --delay custom property per bar (for staggering) that had nothing
+   consuming it — this now drives a fill-in animation via scaleX, which
+   works regardless of the bar's inline width and respects RTL (fills
+   from the right, matching the page's reading direction). */
+.stat-bar-wrap { margin-bottom: var(--sp-md); }
+.stat-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.4rem;
+}
+.stat-bar-label {
+  font-family: var(--font-arabic);
+  font-size: var(--fs-sm);
+  color: var(--bone);
+}
+.stat-bar-value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--dust);
+}
+.stat-bar-track {
+  height: 6px;
+  background: var(--crater);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transform-origin: right;
+  animation: stat-fill-in 0.8s var(--ease-out) both;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes stat-fill-in {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stat-bar-fill { animation: none; }
+}
+.stat-bar-fill.blood  { background: linear-gradient(90deg, var(--blood), var(--ember)); }
+.stat-bar-fill.amber  { background: linear-gradient(90deg, var(--amber), var(--gold)); }
+.stat-bar-fill.acid   { background: linear-gradient(90deg, var(--moss), var(--acid)); }
+.stat-bar-fill.steel  { background: linear-gradient(90deg, var(--steel), var(--ice)); }
+
+/* ── Abilities Grid ── */
+.abilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--sp-sm);
+}
+.ability-card {
+  background: var(--crater);
+  border: 1px solid var(--ash);
+  border-radius: 7px;
+  padding: var(--sp-md);
+  transition: border-color var(--t-mid), transform var(--t-mid);
+  position: relative;
+  overflow: hidden;
+}
+.ability-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 2px; height: 100%;
+  background: var(--accent-color, var(--blood));
+  opacity: 0.5;
+}
+.ability-card:hover {
+  border-color: var(--accent-color, var(--blood));
+  transform: translateY(-2px);
+}
+.ability-icon {
+  display: block;
+  margin-bottom: var(--sp-sm);
+  color: var(--accent-color, var(--blood)); /* new — was emoji, now a colored SVG */
+}
+.ability-icon svg { width: 22px; height: 22px; }
+.ability-name {
+  font-family: var(--font-arabic);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ghost);
+  display: block;
+  margin-bottom: 4px;
+}
+.ability-tier {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--accent-color, var(--blood));
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-sm);
+}
+.ability-desc {
+  font-family: var(--font-arabic);
+  font-size: 0.78rem;
+  color: var(--dust);
+  line-height: 1.5;
+  direction: rtl;
+}
+
+/* ── Character Quote ── */
+.char-quote {
+  padding: var(--sp-lg) var(--sp-xl);
+  border-top: 1px solid var(--ash);
+  text-align: center;
+  position: relative;
+}
+.char-quote::before {
+  content: '"';
+  position: absolute;
+  top: var(--sp-md);
+  right: var(--sp-lg);
+  font-size: 4rem;
+  color: var(--blood);
+  opacity: 0.15;
+  font-family: serif;
+  line-height: 1;
+}
+.char-quote-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--bone);
+  line-height: 1.8;
+  direction: rtl;
+  max-width: 50ch;
+  margin: 0 auto var(--sp-sm);
+}
+.char-quote-attr {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--dust);
+  letter-spacing: 0.2em;
+}
+
+/* ── Lore Text ── */
+.lore-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--bone);
+  line-height: 1.9;
+  direction: rtl;
+}
+.lore-text p { margin-bottom: 1em; }
+.lore-text em { color: var(--amber); font-style: normal; font-weight: 600; }
+
+/* ── Unknown Characters Section ── */
+.unknown-section {
+  margin-top: var(--sp-xl);
+}
+/* New — .section-subtitle had no CSS anywhere; a muted line under
+   .section-title, matching the same section-header block from shared.css. */
+.section-subtitle {
+  font-family: var(--font-arabic);
+  font-size: var(--fs-sm);
+  color: var(--dust);
+  text-align: center;
+  margin-top: -0.5rem;
+  margin-bottom: var(--sp-md);
+}
+.unknown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-md);
+}
+.unknown-card {
+  background: var(--crater);
+  border: 1px solid var(--ash);
+  border-radius: 8px;
+  padding: var(--sp-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.unknown-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(42,36,36,0.4) 6px,
+    rgba(42,36,36,0.4) 12px
+  );
+  pointer-events: none;
+}
+.unknown-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 1px dashed var(--ash);
+  margin: 0 auto var(--sp-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--smoke);
+  background: var(--shadow);
+}
+.unknown-avatar svg { width: 26px; height: 26px; } /* new — was an emoji */
+.unknown-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--dust);
+  letter-spacing: 0.2em;
+  display: block;
+  margin-bottom: var(--sp-xs);
+}
+.unknown-name {
+  font-family: var(--font-arabic);
+  font-size: 0.9rem;
+  color: var(--smoke);
+  filter: blur(4px);
+  user-select: none;
+}
+.unknown-badge {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--blood);
+  letter-spacing: 0.2em;
+  border: 1px solid rgba(139,26,26,0.3);
+  padding: 3px 8px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--sp-sm);
+}
+.unknown-badge svg { width: 10px; height: 10px; flex-shrink: 0; } /* new — was an emoji */
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .dossier-header { grid-template-columns: 1fr; }
+  .dossier-avatar-col { border-left: none; border-bottom: 1px solid var(--ash); padding: var(--sp-lg); flex-direction: row; }
+  .dossier-body { grid-template-columns: 1fr; }
+  .dossier-section:nth-child(even) { border-right: none; }
+  .dossier-info-col { padding: var(--sp-md); }
+}
