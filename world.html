@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="عالم سقوط الشظية — الكارثة، التصنيفات، نظام القوى، وحال العالم بعد سقوط النيزك." />
+  <title>عالم الرواية · سقوط الشظية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+<style>
+/* ══════════════════════════════════════════════
+   WORLD PAGE — LOCAL STYLES
+══════════════════════════════════════════════ */
+
+.page-wrap { padding-top: var(--header-h); min-height: 100vh; }
+
+/* ── Page Hero ── */
+.page-hero {
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--sp-xl) var(--sp-md);
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(139,26,26,0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 40% at 50% 100%, rgba(10,8,8,1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139,26,26,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,26,26,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.page-hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--blood);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-md);
+  animation: fadeUp 0.7s var(--ease-out) 0.2s both;
+}
+.page-hero-title {
+  font-family: var(--font-arabic);
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  font-weight: 900;
+  color: var(--ghost);
+  margin-bottom: var(--sp-sm);
+  animation: fadeUp 0.7s var(--ease-out) 0.4s both;
+  text-shadow: var(--glow-text);
+}
+.page-hero-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--dust);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-xl);
+  animation: fadeUp 0.7s var(--ease-out) 0.6s both;
+}
+.page-hero-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--bone);
+  line-height: 1.9;
+  max-width: 55ch;
+  direction: rtl;
+  animation: fadeUp 0.7s var(--ease-out) 0.8s both;
+}
+
+/* ── Content Container ── */
+.world-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--sp-md) var(--sp-2xl);
+}
+
+/* ── TIMELINE SECTION ── */
+.timeline-section { padding: var(--sp-xl) 0; }
+.timeline {
+  position: relative;
+  padding-right: var(--sp-xl);
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 20px;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--blood) 0%, var(--ash) 60%, transparent 100%);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--sp-xl);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.timeline-item.visible { opacity: 1; transform: none; }
+.timeline-dot {
+  position: absolute;
+  right: -32px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--blood);
+  background: var(--abyss);
+  z-index: 2;
+}
+.timeline-item.critical .timeline-dot {
+  background: var(--blood);
+  box-shadow: 0 0 10px var(--blood);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+.timeline-period {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--blood);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-xs);
+}
+.timeline-event {
+  font-family: var(--font-arabic);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ghost);
+  margin-bottom: var(--sp-xs);
+}
+.timeline-desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--dust);
+  line-height: 1.8;
+  direction: rtl;
+  max-width: 60ch;
+}
+
+/* ── CLASSIFICATION SECTION ── */
+.class-section { padding: var(--sp-xl) 0; }
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--sp-md);
+}
+.class-card {
+  background: var(--shadow);
+  border: 1px solid var(--ash);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform var(--t-mid), border-color var(--t-mid), box-shadow var(--t-mid);
+}
+.class-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.5);
+}
+.class-card[data-type="full"] { border-color: rgba(139,26,26,0.25); }
+.class-card[data-type="full"]:hover { border-color: var(--blood); box-shadow: 0 16px 50px rgba(0,0,0,0.5), var(--glow-blood); }
+.class-card[data-type="partial"] { border-color: rgba(212,148,58,0.2); }
+.class-card[data-type="partial"]:hover { border-color: var(--amber); box-shadow: 0 16px 50px rgba(0,0,0,0.5), var(--glow-amber); }
+.class-card[data-type="mutation"] { border-color: rgba(74,90,107,0.2); }
+.class-card[data-type="mutation"]:hover { border-color: var(--steel); }
+
+.class-card-header {
+  padding: var(--sp-lg);
+  border-bottom: 1px solid var(--ash);
+  position: relative;
+}
+.class-card[data-type="full"]    .class-card-header { background: rgba(139,26,26,0.06); }
+.class-card[data-type="partial"] .class-card-header { background: rgba(212,148,58,0.04); }
+.class-card[data-type="mutation"] .class-card-header { background: rgba(74,90,107,0.04); }
+
+.class-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--sp-sm);
+}
+.class-num {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--dust);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+.class-name-ar {
+  font-family: var(--font-arabic);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ghost);
+  display: block;
+  margin-bottom: 4px;
+}
+.class-name-en {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  display: block;
+  letter-spacing: 0.15em;
+}
+.class-card[data-type="full"]    .class-name-en { color: var(--blood); }
+.class-card[data-type="partial"] .class-name-en { color: var(--amber); }
+.class-card[data-type="mutation"] .class-name-en { color: var(--steel); }
+
+.class-card-body { padding: var(--sp-lg); }
+.class-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--dust);
+  line-height: 1.8;
+  direction: rtl;
+  margin-bottom: var(--sp-md);
+}
+.class-traits { display: flex; flex-direction: column; gap: 6px; }
+.class-trait {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-family: var(--font-arabic);
+  font-size: 0.8rem;
+  color: var(--bone);
+  direction: rtl;
+}
+.class-trait::before {
+  content: '▸';
+  color: var(--dust);
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+.class-danger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--sp-md);
+  padding-top: var(--sp-sm);
+  border-top: 1px solid var(--ash);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--dust);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.danger-dots {
+  display: flex;
+  gap: 3px;
+}
+.danger-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ash);
+}
+.danger-dot.active { background: var(--blood); }
+
+/* ── POWER SYSTEM ── */
+.power-section { padding: var(--sp-xl) 0; }
+.power-diagram {
+  background: var(--shadow);
+  border: 1px solid rgba(139,26,26,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.power-header {
+  padding: var(--sp-lg);
+  border-bottom: 1px solid var(--ash);
+  background: rgba(139,26,26,0.05);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+.power-header-icon { font-size: 1.5rem; }
+.power-header-title {
+  font-family: var(--font-arabic);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ghost);
+}
+.power-header-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--dust);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+}
+.power-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.power-step {
+  padding: var(--sp-lg);
+  border-left: 1px solid var(--ash);
+  position: relative;
+  text-align: center;
+}
+.power-step:first-child { border-left: none; }
+.power-step-arrow {
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translate(-50%, -50%);
+  color: var(--blood);
+  font-size: 1rem;
+  z-index: 2;
+  background: var(--shadow);
+  width: 20px; height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.power-step:first-child .power-step-arrow { display: none; }
+.power-step-icon { font-size: 1.6rem; display: block; margin-bottom: var(--sp-sm); }
+.power-step-title {
+  font-family: var(--font-arabic);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ghost);
+  display: block;
+  margin-bottom: 4px;
+  direction: rtl;
+}
+.power-step-desc {
+  font-family: var(--font-arabic);
+  font-size: 0.78rem;
+  color: var(--dust);
+  line-height: 1.6;
+  direction: rtl;
+}
+.power-tiers {
+  padding: var(--sp-lg);
+  border-top: 1px solid var(--ash);
+}
+.power-tiers-title {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--dust);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--sp-md);
+}
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--sp-sm);
+}
+.tier-card {
+  background: var(--crater);
+  border: 1px solid var(--ash);
+  border-radius: 6px;
+  padding: var(--sp-md);
+  direction: rtl;
+  transition: border-color var(--t-fast);
+}
+.tier-card:hover { border-color: var(--blood); }
+.tier-rank {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--blood);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+.tier-gain {
+  font-family: var(--font-arabic);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--bone);
+  display: block;
+  margin-bottom: 4px;
+}
+.tier-desc {
+  font-family: var(--font-arabic);
+  font-size: 0.75rem;
+  color: var(--smoke);
+  line-height: 1.5;
+}
+
+/* ── WORLD STATE ── */
+.state-section { padding: var(--sp-xl) 0; }
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-xl);
+}
+.state-stat-card {
+  background: var(--crater);
+  border: 1px solid var(--ash);
+  border-radius: 8px;
+  padding: var(--sp-lg);
+  text-align: center;
+  transition: border-color var(--t-mid);
+}
+.state-stat-card:hover { border-color: var(--blood); }
+.state-stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--amber);
+  display: block;
+  margin-bottom: var(--sp-xs);
+  text-shadow: var(--glow-amber);
+}
+.state-stat-label {
+  font-family: var(--font-arabic);
+  font-size: 0.85rem;
+  color: var(--dust);
+  direction: rtl;
+}
+.state-conditions {
+  background: var(--shadow);
+  border: 1px solid var(--ash);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.state-condition {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-lg);
+  border-bottom: 1px solid rgba(42,36,36,0.5);
+  direction: rtl;
+  transition: background var(--t-fast);
+}
+.state-condition:last-child { border-bottom: none; }
+.state-condition:hover { background: rgba(139,26,26,0.04); }
+.state-condition-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+.state-condition-body {}
+.state-condition-title {
+  font-family: var(--font-arabic);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ghost);
+  display: block;
+  margin-bottom: 2px;
+}
+.state-condition-desc {
+  font-family: var(--font-arabic);
+  font-size: 0.8rem;
+  color: var(--dust);
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .power-flow { grid-template-columns: 1fr; }
+  .power-step { border-left: none; border-top: 1px solid var(--ash); }
+  .power-step:first-child { border-top: none; }
+  .power-step-arrow { display: none !important; }
+  .timeline { padding-right: var(--sp-lg); }
+  .timeline::before { right: 12px; }
+  .timeline-dot { right: -24px; }
+}
+</style>
+</head>
+<body data-theme="void">
+
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+<!-- HEADER -->
+<header id="site-header" role="banner">
+  <a href="index.html" class="header-logo" aria-label="العودة للرئيسية">
+    <div class="logo-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="14,2 26,22 2,22" fill="none" stroke="#8b1a1a" stroke-width="1.5"/>
+        <line x1="14" y1="2" x2="14" y2="22" stroke="#d4943a" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="14" cy="14" r="2" fill="#8b1a1a"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-text-ar">سقوط الشظية</span>
+      <span class="logo-text-en">Fragment Fall</span>
+    </div>
+  </a>
+  <nav class="header-page-nav" aria-label="صفحات الموقع">
+    <a href="index.html" class="page-nav-link">
+      <span class="nav-dot" aria-hidden="true"></span>الرئيسية
+    </a>
+    <a href="characters.html" class="page-nav-link">
+      <span class="nav-dot" aria-hidden="true"></span>الشخصيات
+    </a>
+    <a href="world.html" class="page-nav-link active" aria-current="page">
+      <span class="nav-dot" aria-hidden="true"></span>عالم الرواية
+    </a>
+  </nav>
+  <div class="header-actions">
+    <a href="index.html" class="btn-ghost" aria-label="ابدأ القراءة">← اقرأ الرواية</a>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="page-wrap">
+
+  <!-- HERO -->
+  <section class="page-hero" aria-labelledby="world-hero-title">
+    <div class="page-hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+    <span class="page-hero-eyebrow">▲ أرشيف عالم الرواية · WORLD CODEX</span>
+    <h1 class="page-hero-title" id="world-hero-title">عالم ما بعد الكارثة</h1>
+    <span class="page-hero-sub">FRAGMENT FALL · WORLD ARCHIVE · POST-IMPACT DAY ∞</span>
+    <p class="page-hero-desc">
+      في لحظة واحدة، سقط النيزك وتغير كل شيء. ما تجده هنا هو توثيق لعالم لم يعد يشبه ما كان —
+      الكارثة، التحولات، التصنيفات، ونظام القوى الذي ولد من رماد الحضارة.
+    </p>
+  </section>
+
+  <div class="world-container">
+
+    <!-- ── TIMELINE ── -->
+    <section class="timeline-section" aria-labelledby="timeline-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">◆ سجل الأحداث</span>
+        <h2 class="section-title" id="timeline-heading">خط الزمن</h2>
+        <p class="section-subtitle">من لحظة الارتطام إلى الواقع الراهن</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item critical reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">اليوم صفر — D+00:00:00</span>
+          <h3 class="timeline-event">سقوط النيزك</h3>
+          <p class="timeline-desc">ارتطام نيزك ضخم بسطح الأرض. الانفجار الأولي محا ما نسبته 30% من المنطقة المركزية. رافق الارتطامَ انبعاثُ غبار كوني يحمل مادة بيولوجية لم تُعرف من قبل.</p>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">الأيام 1–7</span>
+          <h3 class="timeline-event">انتشار الغبار</h3>
+          <p class="timeline-desc">اختلط الغبار الكوني بالهواء والمياه الجوفية. بدأت أعراض غامضة تظهر على السكان: صداع شديد، دوار، وهلوسات بصرية خفيفة. لم يدرك أحد بعد ما الذي يحدث.</p>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">الأسابيع 2–4</span>
+          <h3 class="timeline-event">بداية التحولات</h3>
+          <p class="timeline-desc">تسارعت التفاعلات البيولوجية. بدأت أجساد المصابين تتغير على المستوى الجزيئي. الحيوانات كانت الأسرع تأثراً، تليها البشر الأقل مناعةً.</p>
+        </div>
+
+        <div class="timeline-item critical reveal reveal-delay-3">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">الشهر الأول</span>
+          <h3 class="timeline-event">انهيار المجتمع</h3>
+          <p class="timeline-desc">تحولات جماعية واسعة النطاق. انهيار شبكات الكهرباء والاتصالات والغذاء. الحكومات المركزية تفقد السيطرة. بدأ الناجون يتشكلون في مجموعات صغيرة متفرقة.</p>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">الشهر الثالث</span>
+          <h3 class="timeline-event">ظهور التصنيفات الثلاثة</h3>
+          <p class="timeline-desc">باتت الفئات الثلاث واضحة المعالم: المتحولون بالكامل (وحوش)، المتحولون جزئياً (بشر بقدرات)، والطفرات (ذرية هجينة). الصراع بين هذه الفئات أصبح جوهر الحياة اليومية.</p>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">الشهر السادس</span>
+          <h3 class="timeline-event">اكتشاف نظام الاكتساب</h3>
+          <p class="timeline-desc">اكتشف الناجون أن تناول لحوم المتحولين يمنح قدرات. لم يكن الأمر مقصوداً في البداية، بل كان ضرورة للبقاء. لكن النتائج غيّرت قواعد الصراع كلياً.</p>
+        </div>
+
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <span class="timeline-period">الحاضر</span>
+          <h3 class="timeline-event">الواقع الراهن</h3>
+          <p class="timeline-desc">75% من سكان الأرض في عداد المفقودين أو المتحولين. المدن كجثث متحللة. الأرض تعاني كوارث تكتونية متقطعة. البقاء معركة يومية لا هوادة فيها.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <span class="divider-icon">◆</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- ── CLASSIFICATIONS ── -->
+    <section class="class-section" aria-labelledby="class-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">◆ التصنيف الرسمي</span>
+        <h2 class="section-title" id="class-heading">الفئات الثلاث</h2>
+        <p class="section-subtitle">انقسم البشر والكائنات إلى ثلاث فئات بعد انتشار الغبار الكوني.</p>
+      </div>
+
+      <div class="class-grid">
+
+        <!-- Fully Transformed -->
+        <div class="class-card reveal" data-type="full">
+          <div class="class-card-header">
+            <span class="class-icon" aria-hidden="true">☠</span>
+            <span class="class-num">CLASS · 01</span>
+            <span class="class-name-ar">المتحولون بالكامل</span>
+            <span class="class-name-en">FULLY TRANSFORMED</span>
+          </div>
+          <div class="class-card-body">
+            <p class="class-desc">بشر فقدوا جميع جوانب إنسانيتهم. تحولوا إلى وحوش متوحشة مدفوعة بغريزة الصيد والتدمير فحسب. لا وعي، لا ذاكرة، لا هوية.</p>
+            <div class="class-traits">
+              <span class="class-trait">لا وعي بشري متبقٍّ</span>
+              <span class="class-trait">قوة وسرعة فوق طبيعية</span>
+              <span class="class-trait">غرائز حيوانية بحتة</span>
+              <span class="class-trait">تنوع شكلي واسع حسب الطفرة</span>
+            </div>
+            <div class="class-danger">
+              <span>مستوى الخطر:</span>
+              <div class="danger-dots" aria-label="خطر شديد — 5 من 5">
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Partially Transformed -->
+        <div class="class-card reveal reveal-delay-1" data-type="partial">
+          <div class="class-card-header">
+            <span class="class-icon" aria-hidden="true">⚡</span>
+            <span class="class-num">CLASS · 02</span>
+            <span class="class-name-ar">المتحولون جزئياً</span>
+            <span class="class-name-en">PARTIALLY TRANSFORMED</span>
+          </div>
+          <div class="class-card-body">
+            <p class="class-desc">بشر تمكنوا من مقاومة الغبار جزئياً، فأكسبهم ذلك قدرات خارقة ضعيفة نسبياً مع الإبقاء على صفاتهم البشرية. هم أمل البشرية الأخير.</p>
+            <div class="class-traits">
+              <span class="class-trait">وعي بشري كامل</span>
+              <span class="class-trait">قدرة واحدة أو أكثر مكتسبة</span>
+              <span class="class-trait">قادرون على اكتساب قدرات إضافية</span>
+              <span class="class-trait">تباين واسع في مستوى القدرات</span>
+            </div>
+            <div class="class-danger">
+              <span>مستوى الخطر:</span>
+              <div class="danger-dots" aria-label="خطر متوسط — 3 من 5">
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot"></div>
+                <div class="danger-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mutations -->
+        <div class="class-card reveal reveal-delay-2" data-type="mutation">
+          <div class="class-card-header">
+            <span class="class-icon" aria-hidden="true">🧬</span>
+            <span class="class-num">CLASS · 03</span>
+            <span class="class-name-ar">الطفرات</span>
+            <span class="class-name-en">MUTATIONS</span>
+          </div>
+          <div class="class-card-body">
+            <p class="class-desc">ذرية تكاثر صنفين مختلفين من الكائنات المتحولة. يحملون جينات هجينة لم تُعرف من قبل، مما يجعل تصنيفهم وتوقع سلوكهم أمراً بالغ الصعوبة.</p>
+            <div class="class-traits">
+              <span class="class-trait">طبيعة هجينة غير قابلة للتنبؤ</span>
+              <span class="class-trait">قدرات مشتقة من كلا الأصلين</span>
+              <span class="class-trait">مورفولوجيا متنوعة وغير ثابتة</span>
+              <span class="class-trait">نادرون ولكن بالغو الخطورة</span>
+            </div>
+            <div class="class-danger">
+              <span>مستوى الخطر:</span>
+              <div class="danger-dots" aria-label="خطر مجهول — متغير">
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+                <div class="danger-dot active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <span class="divider-icon">◆</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- ── POWER SYSTEM ── -->
+    <section class="power-section" aria-labelledby="power-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">◆ نظام القوى</span>
+        <h2 class="section-title" id="power-heading">الاكتساب عبر الصيد</h2>
+        <p class="section-subtitle">جسد الوحش مفتاح التطور. لكن كل مفتاح يفتح باباً لا يُعرف ما وراءه.</p>
+      </div>
+
+      <div class="power-diagram reveal">
+        <div class="power-header">
+          <span class="power-header-icon" aria-hidden="true">⚗</span>
+          <div>
+            <span class="power-header-title">آلية الاكتساب</span>
+            <span class="power-header-sub">ACQUISITION MECHANISM · BIOLOGICAL ASSIMILATION</span>
+          </div>
+        </div>
+        <div class="power-flow">
+          <div class="power-step">
+            <span class="power-step-arrow" aria-hidden="true">▸</span>
+            <span class="power-step-icon" aria-hidden="true">⚔</span>
+            <span class="power-step-title">القتل</span>
+            <p class="power-step-desc">إسقاط كائن متحول. كلما كان الكائن أعلى رتبةً، كانت القدرة المكتسبة من استهلاكه أقوى.</p>
+          </div>
+          <div class="power-step">
+            <span class="power-step-arrow" aria-hidden="true">▸</span>
+            <span class="power-step-icon" aria-hidden="true">C</span>
+            <span class="power-step-title">الاستهلاك</span>
+            <p class="power-step-desc">تناول جزء من لحم الكائن المقتول. المادة الكونية المُدمجة في خلاياه تنتقل إلى الجهاز الهضمي.</p>
+          </div>
+          <div class="power-step">
+            <span class="power-step-arrow" aria-hidden="true">▸</span>
+            <span class="power-step-icon" aria-hidden="true">M</span>
+            <span class="power-step-title">التمثّل</span>
+            <p class="power-step-desc">الجسم يمتص المادة الكونية ويحوّلها إلى قدرة مرتبطة بطبيعة الكائن الأصلي.</p>
+          </div>
+        </div>
+        <div class="power-tiers">
+          <span class="power-tiers-title">◆ TIER SYSTEM · مستويات الكائنات والقدرات المكتسبة</span>
+          <div class="tier-grid">
+            <div class="tier-card">
+              <span class="tier-rank">TIER 1 · عادي</span>
+              <span class="tier-gain">تحسين حاسة واحدة</span>
+              <p class="tier-desc">مثل تحسين السمع أو البصر. شائع وأمان نسبي.</p>
+            </div>
+            <div class="tier-card">
+              <span class="tier-rank">TIER 2 · متطور</span>
+              <span class="tier-gain">قدرة فرعية خاصة</span>
+              <p class="tier-desc">قدرة مشتقة من طبيعة الكائن. نادر وأكثر خطورة في الاكتساب.</p>
+            </div>
+            <div class="tier-card">
+              <span class="tier-rank">TIER 3 · رفيع</span>
+              <span class="tier-gain">قدرة رئيسية فريدة</span>
+              <p class="tier-desc">قدرات تغيّر قواعد المعركة. اكتسابها يترك آثاراً مجهولة على الجسم.</p>
+            </div>
+            <div class="tier-card" style="border-color:rgba(139,26,26,0.3);">
+              <span class="tier-rank" style="color:var(--ember);">TIER X · مجهول</span>
+              <span class="tier-gain">غير محدد</span>
+              <p class="tier-desc">كائنات من درجة غير مصنفة. لا يوجد ناجٍ أبلغ عن اكتسابها بعد.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <span class="divider-icon">◆</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- ── WORLD STATE ── -->
+    <section class="state-section" aria-labelledby="state-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">◆ حال العالم</span>
+        <h2 class="section-title" id="state-heading">الواقع الراهن</h2>
+        <p class="section-subtitle">بالأرقام وبالحقائق — عالم لا رجعة فيه.</p>
+      </div>
+
+      <div class="state-grid">
+        <div class="state-stat-card reveal">
+          <span class="state-stat-num">75%</span>
+          <span class="state-stat-label">من سكان الأرض في عداد المفقودين أو المتحولين</span>
+        </div>
+        <div class="state-stat-card reveal reveal-delay-1">
+          <span class="state-stat-num">3×</span>
+          <span class="state-stat-label">مساحة الأرض الفعلية بعد التمدد التكتوني</span>
+        </div>
+        <div class="state-stat-card reveal reveal-delay-2">
+          <span class="state-stat-num">∞</span>
+          <span class="state-stat-label">طفرات جديدة لا تزال تظهر يومياً</span>
+        </div>
+        <div class="state-stat-card reveal reveal-delay-3">
+          <span class="state-stat-num">0</span>
+          <span class="state-stat-label">حكومات مركزية فاعلة متبقية</span>
+        </div>
+      </div>
+
+      <div class="state-conditions reveal">
+        <div class="state-condition">
+          <span class="state-condition-icon" aria-hidden="true">🏚</span>
+          <div class="state-condition-body">
+            <span class="state-condition-title">المدن — هياكل فارغة</span>
+            <p class="state-condition-desc">المباني الشاهقة تحولت إلى هياكل خرسانية مدمرة. الطرق مهجورة. البنية التحتية انهارت تماماً. كل مدينة كبرى أصبحت منطقة خطر يكتنفها الصمت والدم.</p>
+          </div>
+        </div>
+        <div class="state-condition">
+          <span class="state-condition-icon" aria-hidden="true">🌋</span>
+          <div class="state-condition-body">
+            <span class="state-condition-title">الأرض — غير مستقرة</span>
+            <p class="state-condition-desc">حركة الصفائح التكتونية تُحدث كوارث دورية: زلازل، انزلاقات أرضية، ثورانات بركانية. ما تبقى من مناطق آمنة يتضاءل مع مرور الوقت.</p>
+          </div>
+        </div>
+        <div class="state-condition">
+          <span class="state-condition-icon" aria-hidden="true">☁</span>
+          <div class="state-condition-body">
+            <span class="state-condition-title">الهواء — ملوث جزئياً</span>
+            <p class="state-condition-desc">الغبار الكوني لا يزال في الغلاف الجوي. تركيزه تراجع، لكن التعرض المطوّل في مناطق بعينها قد يُعجّل التحولات لدى من يحملون الاستعداد الجيني.</p>
+          </div>
+        </div>
+        <div class="state-condition">
+          <span class="state-condition-icon" aria-hidden="true">👥</span>
+          <div class="state-condition-body">
+            <span class="state-condition-title">البشر — متفرقون ومتنافسون</span>
+            <p class="state-condition-desc">الناجون يتشكلون في مجموعات صغيرة. لا قوانين واضحة، لا سلطة مركزية. الموارد شحيحة والثقة أشح. أحياناً البشر أخطر من الوحوش.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /world-container -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <nav class="footer-nav-links" aria-label="روابط التنقل">
+      <a href="index.html">الرئيسية</a>
+      <a href="characters.html">الشخصيات</a>
+    </nav>
+    <span class="footer-logo-ar">سقوط الشظية</span>
+    <p class="footer-copy">FRAGMENT FALL · WORLD CODEX · ALL RIGHTS RESERVED</p>
+  </footer>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast-container" aria-live="polite"></div>
+
+<script>
+'use strict';
+/* ── Particles ── */
+(() => {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const resize = () => { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; };
+  const make = (anywhere) => ({
+    x: Math.random() * (window.innerWidth || 800),
+    y: anywhere ? Math.random() * (window.innerHeight || 600) : -10,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: Math.random() * 0.5 + 0.2,
+    size: Math.random() * 2.2 + 0.4,
+    opacity: Math.random() * 0.35 + 0.05,
+    wobble: Math.random() * Math.PI * 2,
+    wobbleSpeed: (Math.random() - 0.5) * 0.02,
+    color: Math.random() > 0.8 ? '#8b1a1a' : '#3d3535',
+  });
+  resize();
+  particles = Array.from({ length: 70 }, () => make(true));
+  const loop = () => {
+    requestAnimationFrame(loop);
+    ctx.clearRect(0, 0, W, H);
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.wobble += p.wobbleSpeed; p.x += p.vx + Math.sin(p.wobble) * 0.2; p.y += p.vy;
+      if (p.y > H + 10) { particles[i] = make(false); continue; }
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  };
+  loop();
+  window.addEventListener('resize', resize);
+})();
+
+/* ── Reveal on scroll ── */
+(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+})();
+</script>
+</body>
+</html>

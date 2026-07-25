@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="شخصيات سقوط الشظية — ملفات الناجين والمتحولين في عالم ما بعد الكارثة." />
+  <title>الشخصيات · سقوط الشظية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/characters.css" />
+</head>
+<body data-theme="void">
+
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+<!-- HEADER -->
+<header id="site-header" role="banner">
+  <a href="index.html" class="header-logo" aria-label="العودة للرئيسية">
+    <div class="logo-icon">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="14,2 26,22 2,22" fill="none" stroke="#8b1a1a" stroke-width="1.5"/>
+        <line x1="14" y1="2" x2="14" y2="22" stroke="#d4943a" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="14" cy="14" r="2" fill="#8b1a1a"/>
+      </svg>
+    </div>
+    <div>
+      <span class="logo-text-ar">سقوط الشظية</span>
+      <span class="logo-text-en">Fragment Fall</span>
+    </div>
+  </a>
+  <nav class="header-page-nav" aria-label="صفحات الموقع">
+    <a href="index.html" class="page-nav-link">
+      <span class="nav-dot" aria-hidden="true"></span>الرئيسية
+    </a>
+    <a href="characters.html" class="page-nav-link active" aria-current="page">
+      <span class="nav-dot" aria-hidden="true"></span>الشخصيات
+    </a>
+    <a href="world.html" class="page-nav-link">
+      <span class="nav-dot" aria-hidden="true"></span>عالم الرواية
+    </a>
+  </nav>
+  <div class="header-actions">
+    <a href="index.html" class="btn-ghost" aria-label="ابدأ القراءة">← اقرأ الرواية</a>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="page-wrap">
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="page-hero-eyebrow">▲ ملفات الناجين · SURVIVOR DOSSIERS</span>
+    <h1 class="page-hero-title">الشخصيات</h1>
+    <span class="page-hero-sub">FRAGMENT FALL · CHARACTER ARCHIVE · FILE COUNT: 01 ACTIVE / ∞ CLASSIFIED</span>
+  </div>
+
+  <!-- CHARACTERS -->
+  <div class="chars-container">
+
+    <!-- HANZOU DOSSIER -->
+    <article class="dossier-card reveal" aria-labelledby="char-hanzou-name">
+
+      <!-- Header Row -->
+      <div class="dossier-header">
+        <div class="dossier-avatar-col">
+          <div class="dossier-avatar" aria-label="صورة رمزية لـ هانزو">
+            <div class="dossier-status-dot" title="على قيد الحياة" aria-label="الحالة: على قيد الحياة"></div>
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="30" cy="22" r="10" stroke="#b8a898" stroke-width="1.5"/>
+              <path d="M10 52c0-11 8.95-20 20-20s20 8.95 20 20" stroke="#b8a898" stroke-width="1.5"/>
+              <path d="M20 28l-4 8 4 2" stroke="#8b1a1a" stroke-width="1" opacity="0.6"/>
+              <path d="M40 28l4 8-4 2" stroke="#8b1a1a" stroke-width="1" opacity="0.6"/>
+              <circle cx="30" cy="22" r="3" fill="#8b1a1a" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="dossier-avatar-id">ID: FF-001 / ALPHA</div>
+        </div>
+
+        <div class="dossier-info-col">
+          <span class="dossier-codename">بطل الرواية · PROTAGONIST</span>
+          <h2 class="dossier-name" id="char-hanzou-name">هانزو</h2>
+          <span class="dossier-name-en">HANZOU</span>
+          <div class="dossier-tags">
+            <span class="badge badge-amber">متحول جزئياً</span>
+            <span class="badge badge-blood">ناجٍ</span>
+            <span class="badge badge-acid">غير محدد الهوية</span>
+            <span class="badge badge-steel">مقاتل</span>
+          </div>
+          <div class="dossier-meta-grid">
+            <div class="dossier-meta-item">
+              <span class="dossier-meta-key">التصنيف</span>
+              <span class="dossier-meta-val">النوع-ب (جزئي)</span>
+            </div>
+            <div class="dossier-meta-item">
+              <span class="dossier-meta-key">الحالة</span>
+              <span class="dossier-meta-val">مجهول الموقع</span>
+            </div>
+            <div class="dossier-meta-item">
+              <span class="dossier-meta-key">العمر</span>
+              <span class="dossier-meta-val">مجهول · ~20-30</span>
+            </div>
+            <div class="dossier-meta-item">
+              <span class="dossier-meta-key">نمط القتال</span>
+              <span class="dossier-meta-val">تكيفي · اشتباك مباشر</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /dossier-header -->
+
+      <!-- Body Grid -->
+      <div class="dossier-body">
+
+        <!-- Stats -->
+        <div class="dossier-section">
+          <span class="dossier-section-title">◆ مؤشرات القدرة</span>
+
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-header">
+              <span class="stat-bar-label">القوة الجسدية</span>
+              <span class="stat-bar-value">78 / 100</span>
+            </div>
+            <div class="stat-bar-track" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="القوة الجسدية">
+              <div class="stat-bar-fill blood" style="width:78%; --delay:0.1s;"></div>
+            </div>
+          </div>
+
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-header">
+              <span class="stat-bar-label">الرشاقة والسرعة</span>
+              <span class="stat-bar-value">72 / 100</span>
+            </div>
+            <div class="stat-bar-track" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="الرشاقة والسرعة">
+              <div class="stat-bar-fill blood" style="width:72%; --delay:0.2s;"></div>
+            </div>
+          </div>
+
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-header">
+              <span class="stat-bar-label">غريزة البقاء</span>
+              <span class="stat-bar-value">91 / 100</span>
+            </div>
+            <div class="stat-bar-track" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100" aria-label="غريزة البقاء">
+              <div class="stat-bar-fill amber" style="width:91%; --delay:0.3s;"></div>
+            </div>
+          </div>
+
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-header">
+              <span class="stat-bar-label">براعة القتال</span>
+              <span class="stat-bar-value">85 / 100</span>
+            </div>
+            <div class="stat-bar-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="براعة القتال">
+              <div class="stat-bar-fill amber" style="width:85%; --delay:0.4s;"></div>
+            </div>
+          </div>
+
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-header">
+              <span class="stat-bar-label">معرفة الوحوش</span>
+              <span class="stat-bar-value">34 / 100</span>
+            </div>
+            <div class="stat-bar-track" role="progressbar" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100" aria-label="معرفة الوحوش">
+              <div class="stat-bar-fill steel" style="width:34%; --delay:0.5s;"></div>
+            </div>
+          </div>
+
+          <div class="stat-bar-wrap">
+            <div class="stat-bar-header">
+              <span class="stat-bar-label">الاستقرار النفسي</span>
+              <span class="stat-bar-value">67 / 100</span>
+            </div>
+            <div class="stat-bar-track" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" aria-label="الاستقرار النفسي">
+              <div class="stat-bar-fill acid" style="width:67%; --delay:0.6s;"></div>
+            </div>
+          </div>
+        </div><!-- /stats -->
+
+        <!-- Background -->
+        <div class="dossier-section">
+          <span class="dossier-section-title">◆ الخلفية</span>
+          <div class="lore-text">
+            <p>اُستُعيد وعيه وسط أنقاض مدينة مجهولة، بلا ذاكرة واضحة عن كيفية وصوله إليها. كل ما يعرفه هو اللحظة التي بدأت فيها الانفجارات، والضوء الذهبي الذي مزّق السماء قبل أن يسقط كل شيء.</p>
+            <p>يُظهر هانزو قدرة غير طبيعية على تجاوز الألم والإصابات، وقوة جسدية تفوق البشر الطبيعيين — علامات على <em>تحول جزئي</em> لا يفهم مصدره بعد.</p>
+            <p>غريزته في البقاء تعوّض عن غياب ذاكرته. يتعلم بسرعة، ويتكيف أسرع، وكل معركة تكشف له شيئاً جديداً عن عالم لم يعد يشبه ما كان.</p>
+          </div>
+        </div>
+
+        <!-- Abilities -->
+        <div class="dossier-section full-width">
+          <span class="dossier-section-title">◆ القدرات المكتسبة</span>
+          <div class="abilities-grid">
+            <div class="ability-card" style="--accent-color: var(--blood);">
+              <span class="ability-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="3.5" cy="8" r="2"/><circle cx="12.5" cy="8" r="2"/><path d="M5.5 8h5"/><path d="M3.5 5.5v5M12.5 5.5v5"/></svg></span>
+              <span class="ability-name">قوة محسّنة</span>
+              <span class="ability-tier">مكتسبة · درجة 1</span>
+              <p class="ability-desc">قوة جسدية تتجاوز الحدود الطبيعية للإنسان. مصدرها التحول الجزئي، وتزداد حدةً في لحظات الخطر الشديد.</p>
+            </div>
+            <div class="ability-card" style="--accent-color: var(--amber);">
+              <span class="ability-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2" stroke-linecap="round"/></svg></span>
+              <span class="ability-name">تفكير تكتيكي</span>
+              <span class="ability-tier">فطرية · درجة 2</span>
+              <p class="ability-desc">يحلل المواقف بهدوء حتى تحت الضغط الشديد. يرى أنماط الحركة والضعف في أقل من ثوانٍ.</p>
+            </div>
+            <div class="ability-card" style="--accent-color: var(--steel);">
+              <span class="ability-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M2 8a6 6 0 0 1 2-4.5"/><path d="M4.5 8a3.5 3.5 0 0 1 1-2.5"/><circle cx="8" cy="8" r="1.1" fill="currentColor" stroke="none"/><path d="M11.5 5.5a3.5 3.5 0 0 1 0 5M14 3.5a6 6 0 0 1 0 9"/></svg></span>
+              <span class="ability-name">حساسية الصوت</span>
+              <span class="ability-tier">مكتسبة من الكائن الأول</span>
+              <p class="ability-desc">حواس سمعية محسّنة جزئياً، مكتسبة من أول مواجهة حقيقية مع المتحولين. تسمح بتحديد مصادر الصوت بدقة أعلى من المعتاد.</p>
+            </div>
+            <div class="ability-card" style="--accent-color: var(--acid);">
+              <span class="ability-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M8 1.5c2.2 3 4 5.3 4 7.5a4 4 0 1 1-8 0c0-2.2 1.8-4.5 4-7.5Z"/></svg></span>
+              <span class="ability-name">تحمّل الألم</span>
+              <span class="ability-tier">مكتسبة · درجة 1</span>
+              <p class="ability-desc">قدرة على مواصلة العمل رغم إصابات بالغة. لا يعني غياب الألم، بل يعني أن الألم لا يوقفه.</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dossier-body -->
+
+      <!-- Quote -->
+      <div class="char-quote">
+        <p class="char-quote-text">أنا… أقوى مما ينبغي. لكن لم يكن الوقت مناسبًا للتفكير في ذلك.</p>
+        <span class="char-quote-attr">— هانزو · الفصل الثالث: ظل البقاء</span>
+      </div>
+
+    </article><!-- /dossier-card -->
+
+    <!-- DIVIDER -->
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <span class="divider-icon">◆</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- UNKNOWN CHARACTERS -->
+    <section class="unknown-section reveal" aria-labelledby="unknown-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">◆ CLASSIFIED · سري للغاية</span>
+        <h2 class="section-title" id="unknown-heading">شخصيات لم تُكشف بعد</h2>
+        <p class="section-subtitle">ملفات مقيّدة الوصول. ستُفتح مع تقدم الرواية.</p>
+      </div>
+      <div class="unknown-grid">
+        <div class="unknown-card">
+          <div class="unknown-avatar" aria-hidden="true">?</div>
+          <span class="unknown-label">SUBJECT · 002</span>
+          <div class="unknown-name" aria-label="اسم مخفي">شخصية مجهولة</div>
+          <span class="unknown-badge"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V4.5a2.5 2.5 0 0 1 5 0V7"/></svg> PENDING REVEAL</span>
+        </div>
+        <div class="unknown-card">
+          <div class="unknown-avatar" aria-hidden="true">?</div>
+          <span class="unknown-label">SUBJECT · 003</span>
+          <div class="unknown-name" aria-label="اسم مخفي">شخصية مجهولة</div>
+          <span class="unknown-badge"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V4.5a2.5 2.5 0 0 1 5 0V7"/></svg> PENDING REVEAL</span>
+        </div>
+        <div class="unknown-card">
+          <div class="unknown-avatar" aria-hidden="true">?</div>
+          <span class="unknown-label">SUBJECT · 004</span>
+          <div class="unknown-name" aria-label="اسم مخفي">شخصية مجهولة</div>
+          <span class="unknown-badge"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V4.5a2.5 2.5 0 0 1 5 0V7"/></svg> PENDING REVEAL</span>
+        </div>
+        <div class="unknown-card">
+          <div class="unknown-avatar" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L14.5 13.5H1.5Z"/><path d="M8 6.3v3.2M8 11.7v.01"/></svg></div>
+          <span class="unknown-label">ENTITY · TYPE-X</span>
+          <div class="unknown-name" aria-label="اسم مخفي">كيان غير مُصنَّف</div>
+          <span class="unknown-badge" style="color:var(--blood);"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L14.5 13.5H1.5Z"/><path d="M8 6.3v3.2M8 11.7v.01"/></svg> EXTREME DANGER</span>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /chars-container -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <nav class="footer-nav-links" aria-label="روابط التنقل">
+      <a href="index.html">الرئيسية</a>
+      <a href="world.html">عالم الرواية</a>
+    </nav>
+    <span class="footer-logo-ar">سقوط الشظية</span>
+    <p class="footer-copy">FRAGMENT FALL · SURVIVOR ARCHIVE · ALL RIGHTS RESERVED</p>
+  </footer>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast-container" aria-live="polite" aria-label="الإشعارات"></div>
+
+<script src="js/characters.js"></script>
+</body>
+</html>
